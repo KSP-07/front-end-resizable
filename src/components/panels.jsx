@@ -35,7 +35,7 @@ export default function Panels() {
 
   const fetchData = (panel) => {
     axios
-      .get(`http://localhost:5000/api/panels/${panel}`)
+      .get(`https://backend-resizable-server.onrender.com/api/panels/${panel}`)
       .then((res) => {
         console.log(res.data.count)
         setData((prevData) => ({ ...prevData, [panel]: res.data.data }));
@@ -57,7 +57,7 @@ export default function Panels() {
 
   const clearInput = (panel) => {
     axios
-      .delete(`http://localhost:5000/api/panels/${panel}/delete`)
+      .delete(`https://backend-resizable-server.onrender.com/api/panels/${panel}/delete`)
       .then(() => {
         setInputValues((prevInputValues) => ({
           ...prevInputValues,
@@ -86,7 +86,7 @@ export default function Panels() {
     console.log(newEntry[panel]);
     if (newEntry[panel] === true) {
       axios
-        .post(`http://localhost:5000/api/panels/${panel}/add`, {
+        .post(`https://backend-resizable-server.onrender.com/api/panels/${panel}/add`, {
           data: inputValues[panel],
           count: countValues[panel] + 1,
         })
@@ -105,7 +105,7 @@ export default function Panels() {
         .catch((err) => console.error(err));
     } else {
       axios
-        .put(`http://localhost:5000/api/panels/${panel}/update`, {
+        .put(`https://backend-resizable-server.onrender.com/api/panels/${panel}/update`, {
           data: inputValues[panel],
           count: countValues[panel] + 1,
         })
